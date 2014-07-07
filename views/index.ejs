@@ -1,0 +1,25 @@
+<%- include header %>
+	
+	<script type="text/javascript">
+		$('#delete').click(function() {
+			alert("delete...");
+		});
+	
+	</script>
+
+
+
+
+	<form action="/create" method="post" >
+		<input type="text" name="content" />
+	</form>
+	<% tasks.forEach(function(task) { %>
+		<p>
+			<span><a href="/edit/<%= task._id %>" title="Update this task"><%= task.content %></a></span>
+			<span><a href="/destroy/<%= task._id %>" title="Delete this task">Delete</a></span><br>
+			<button type="button" id="delete" data-loading-text="Delete..." class="btn btn-primary">
+				删除
+			</button>
+		</p>
+	<% }); %>
+<%- include footer %>

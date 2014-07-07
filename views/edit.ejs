@@ -1,0 +1,24 @@
+<%- include header %>
+
+	<form action='/create' method='post'>
+		<input type="text" name="content" />
+	</form>
+	
+	<% tasks.forEach(function(task) { %>
+		<p>
+			<span>
+				<% if (task._id == current) { %>
+					<form action="/update/<%=task._id %>" method="post" >
+						<input type="text" name="content" value="<%= task.content %>" />
+					</form>
+				<% } else { %>
+					<a href="/edit/<%= task._id %>" title="Update this task"><%= task.content %> </a>
+				<% } %>
+			</span>
+			<span>
+				<a href="/destroy/<%= task._id %>" title="Delete this task">Delete</a>
+			</span>
+		</p>
+	<% }); %>
+	
+<%- include footer %>
